@@ -3,7 +3,7 @@ import { delay } from '../utils';
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  TODO 4 — Service API (15 pts)                               ║
+ * ║  TODO 4 — Service API (12 pts)                               ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
  * ║  Compléter les 3 fonctions du service.                       ║

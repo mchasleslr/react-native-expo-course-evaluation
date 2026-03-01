@@ -4,7 +4,7 @@ import { SEARCH_DEBOUNCE_MS } from '../constants/config';
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  TODO 6 — Hook useSearch avec debounce (15 pts)              ║
+ * ║  TODO 6 — Hook useSearch avec debounce (12 pts)              ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
  * ║  Le state query/setQuery est déjà fourni ci-dessous.         ║

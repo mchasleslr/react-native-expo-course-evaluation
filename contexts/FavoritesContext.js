@@ -1,25 +1,48 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  TODO 7 — FavoritesContext (20 pts)                          ║
+ * ║  TODO 7 — FavoritesContext (16 pts)                          ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
  * ║  Compléter le système de favoris.                            ║
  * ║                                                              ║
- * ║  Partie A — Le reducer (8 pts)                               ║
+ * ║  Partie A — Le reducer (6 pts)                               ║
  * ║    - Action 'ADD'    : ajouter action.payload au state       ║
  * ║    - Action 'REMOVE' : retirer l'item dont l'id              ║
  * ║                        === action.payload du state            ║
  * ║    - Default         : retourner le state inchangé           ║
  * ║                                                              ║
- * ║  Partie B — Le Provider (12 pts)                             ║
+ * ║  Partie B — Le Provider (10 pts)                             ║
  * ║    - Utiliser useReducer avec le reducer et [] comme initial ║
  * ║    - Implémenter addFavorite(book) : dispatch ADD            ║
  * ║    - Implémenter removeFavorite(id) : dispatch REMOVE        ║
  * ║    - Implémenter isFavorite(id) : retourne true/false        ║
  * ║    - Passer dans value : favorites, addFavorite,             ║
  * ║      removeFavorite, isFavorite                              ║
+ * ║                                                              ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ */
+
+/**
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  TODO 10 — Persistance des favoris (5 pts)                   ║
+ * ╠══════════════════════════════════════════════════════════════╣
+ * ║                                                              ║
+ * ║  Persister les favoris avec AsyncStorage :                   ║
+ * ║                                                              ║
+ * ║  1. Importer AsyncStorage depuis                             ║
+ * ║     @react-native-async-storage/async-storage                ║
+ * ║  2. Ajouter une action 'LOAD' dans le reducer qui           ║
+ * ║     remplace le state par action.payload                     ║
+ * ║  3. Au montage du Provider, charger les favoris              ║
+ * ║     sauvegardés (useEffect + AsyncStorage.getItem)           ║
+ * ║     et dispatcher l'action LOAD                              ║
+ * ║  4. À chaque changement de la liste de favoris,              ║
+ * ║     sauvegarder dans AsyncStorage (useEffect sur favorites) ║
+ * ║  5. Utiliser la clé STORAGE_PREFIX + '_favorites'            ║
+ * ║     depuis constants/config.js                               ║
+ * ║  6. Gérer les erreurs silencieusement (console.warn)         ║
  * ║                                                              ║
  * ╚══════════════════════════════════════════════════════════════╝
  */
@@ -32,14 +55,18 @@ const FavoritesContext = createContext();
  */
 function favoritesReducer(state, action) {
   // TODO 7a : Implémenter le switch/case
-  // action.type peut être 'ADD' ou 'REMOVE'
+  // action.type peut être 'ADD', 'REMOVE' ou 'LOAD' (TODO 10)
   // 'ADD'    → action.payload est un objet livre complet
   // 'REMOVE' → action.payload est l'id (string) du livre à retirer
+  // 'LOAD'   → action.payload est le tableau complet de favoris (TODO 10)
   return state;
 }
 
 export function FavoritesProvider({ children }) {
   // TODO 7b : Utiliser useReducer
+
+  // TODO 10 : Charger les favoris depuis AsyncStorage au montage (useEffect)
+  // TODO 10 : Sauvegarder les favoris dans AsyncStorage à chaque changement (useEffect)
 
   // TODO 7b : Implémenter les 3 fonctions
   const addFavorite = (book) => {

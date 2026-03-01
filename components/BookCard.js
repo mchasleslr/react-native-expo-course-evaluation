@@ -3,7 +3,7 @@ import { Colors } from '../constants/colors';
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  TODO 1 — Composant BookCard (15 pts)                       ║
+ * ║  TODO 1 — Composant BookCard (12 pts)                       ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
  * ║  Créer un composant qui affiche une carte de livre.          ║

@@ -3,7 +3,7 @@ import { getPopularBooks } from '../services/books';
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  TODO 5 — Custom Hook useBooks (15 pts)                      ║
+ * ║  TODO 5 — Custom Hook useBooks (12 pts)                      ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
  * ║  Créer un hook qui charge les livres populaires.             ║
