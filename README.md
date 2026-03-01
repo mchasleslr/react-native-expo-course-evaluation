@@ -16,7 +16,7 @@
 Vous devez compléter **BookShelf**, une application de découverte de livres.
 L'application est partiellement construite : la navigation, les couleurs et les données sont en place.
 
-**Votre travail** : compléter les **7 fichiers marqués `// TODO`** pour rendre l'application fonctionnelle.
+**Votre travail** : compléter les **11 fichiers/fonctionnalités marqués `// TODO`** pour rendre l'application fonctionnelle et enrichie.
 
 Chaque TODO est numéroté, localisé dans un fichier précis, et décrit ce qui est attendu.
 Les points sont indiqués pour chaque TODO.
@@ -38,11 +38,11 @@ npx expo start
 app/                           ← Navigation (fournie)
 ├── (tabs)/
 │   ├── _layout.js             ✅ Complet
-│   ├── index.js               📝 Utilise TODO 1, 2, 5
+│   ├── index.js               📝 Utilise TODO 1, 2, 5, 8, 9
 │   ├── search.js              📝 Contient TODO 6
 │   └── favorites.js           📝 Utilise TODO 7
 ├── detail/
-│   └── [id].js                📝 Contient TODO 3
+│   └── [id].js                📝 Contient TODO 3, 11
 └── _layout.js                 ✅ Complet
 
 components/
@@ -56,7 +56,7 @@ hooks/
 └── useSearch.js               📝 TODO 6
 
 contexts/
-└── FavoritesContext.js         📝 TODO 7
+└── FavoritesContext.js         📝 TODO 7, 10
 
 constants/                     ✅ Complet
 data/books.json                ✅ Données fournies
@@ -65,9 +65,9 @@ utils/                         ✅ Complet
 
 ---
 
-## Les 7 TODO
+## Les 11 TODO
 
-### TODO 1 — Composant BookCard (15 pts)
+### TODO 1 — Composant BookCard (12 pts)
 📄 **Fichier** : `components/BookCard.js`
 
 Créer un composant `BookCard` qui affiche une carte de livre avec :
@@ -82,7 +82,7 @@ Créer un composant `BookCard` qui affiche une carte de livre avec :
 
 ---
 
-### TODO 2 — FlatList (10 pts)
+### TODO 2 — FlatList (8 pts)
 📄 **Fichier** : `app/(tabs)/index.js`
 
 Remplacer le commentaire TODO par une `FlatList` qui :
@@ -94,7 +94,7 @@ Remplacer le commentaire TODO par une `FlatList` qui :
 
 ---
 
-### TODO 3 — Navigation détail (10 pts)
+### TODO 3 — Navigation détail (8 pts)
 📄 **Fichier** : `app/detail/[id].js`
 
 Compléter l'écran de détail :
@@ -105,7 +105,7 @@ Compléter l'écran de détail :
 
 ---
 
-### TODO 4 — Service API (15 pts)
+### TODO 4 — Service API (12 pts)
 📄 **Fichier** : `services/books.js`
 
 Compléter les 3 fonctions du service :
@@ -120,7 +120,7 @@ Chaque fonction doit :
 
 ---
 
-### TODO 5 — Custom Hook useBooks (15 pts)
+### TODO 5 — Custom Hook useBooks (12 pts)
 📄 **Fichier** : `hooks/useBooks.js`
 
 Créer un hook `useBooks` qui :
@@ -131,7 +131,7 @@ Créer un hook `useBooks` qui :
 
 ---
 
-### TODO 6 — Hook useSearch avec debounce (15 pts)
+### TODO 6 — Hook useSearch avec debounce (12 pts)
 📄 **Fichier** : `hooks/useSearch.js`
 
 Compléter le hook `useSearch` :
@@ -143,7 +143,7 @@ Compléter le hook `useSearch` :
 
 ---
 
-### TODO 7 — FavoritesContext (20 pts)
+### TODO 7 — FavoritesContext (16 pts)
 📄 **Fichier** : `contexts/FavoritesContext.js`
 
 Compléter le système de favoris :
@@ -154,17 +154,65 @@ Compléter le système de favoris :
 
 ---
 
+### TODO 8 — Filtres par genre (5 pts)
+📄 **Fichier** : `app/(tabs)/index.js`
+
+Ajouter un système de filtrage par genre sur l'écran d'accueil :
+- Extraire dynamiquement les genres disponibles depuis la liste de livres (avec `useMemo`)
+- Afficher des chips horizontaux (`ScrollView` horizontal) permettant de sélectionner un genre
+- Ajouter un chip "Tous" pour réinitialiser le filtre
+- Filtrer la `FlatList` en fonction du genre sélectionné
+
+---
+
+### TODO 9 — Tri des livres (5 pts)
+📄 **Fichier** : `app/(tabs)/index.js`
+
+Ajouter un système de tri sur l'écran d'accueil :
+- Proposer plusieurs options de tri : par défaut, note croissante, note décroissante, titre A-Z, titre Z-A
+- Afficher les options sous forme de chips horizontaux
+- Appliquer le tri sur la liste filtrée (compatible avec le filtre genre)
+- Utiliser `useMemo` pour optimiser le calcul
+
+---
+
+### TODO 10 — Persistance des favoris (5 pts)
+📄 **Fichier** : `contexts/FavoritesContext.js`
+
+Persister les favoris avec `AsyncStorage` :
+- Installer `@react-native-async-storage/async-storage`
+- Au montage du Provider, charger les favoris sauvegardés (action `LOAD` dans le reducer)
+- À chaque changement de la liste de favoris, sauvegarder dans `AsyncStorage`
+- Gérer les erreurs silencieusement (ne pas bloquer l'app si le storage échoue)
+
+---
+
+### TODO 11 — Bouton favori sur l'écran détail (5 pts)
+📄 **Fichier** : `app/detail/[id].js`
+
+Ajouter un bouton toggle favori sur l'écran de détail :
+- Utiliser le hook `useFavorites` pour accéder au contexte
+- Afficher un bouton "Ajouter aux favoris" / "Retirer des favoris" selon l'état
+- Le bouton doit changer visuellement quand le livre est en favori
+- Appeler `addFavorite` ou `removeFavorite` au press
+
+---
+
 ## Barème récapitulatif
 
 | TODO | Compétence | Points |
 |------|-----------|--------|
-| 1 | Core Components + StyleSheet | 15 |
-| 2 | FlatList | 10 |
-| 3 | Navigation (Expo Router) | 10 |
-| 4 | Service API (async/await) | 15 |
-| 5 | Custom Hook (useState + useEffect) | 15 |
-| 6 | Debounce (setTimeout + cleanup) | 15 |
-| 7 | Context API + useReducer | 20 |
+| 1 | Core Components + StyleSheet | 12 |
+| 2 | FlatList | 8 |
+| 3 | Navigation (Expo Router) | 8 |
+| 4 | Service API (async/await) | 12 |
+| 5 | Custom Hook (useState + useEffect) | 12 |
+| 6 | Debounce (setTimeout + cleanup) | 12 |
+| 7 | Context API + useReducer | 16 |
+| 8 | Filtres par genre (useMemo + ScrollView) | 5 |
+| 9 | Tri des livres (useMemo + sort) | 5 |
+| 10 | Persistance AsyncStorage | 5 |
+| 11 | Bouton favori (intégration Context) | 5 |
 | | **Total** | **100** |
 
 ---
@@ -175,6 +223,8 @@ Compléter le système de favoris :
 - Gestion complète des cas d'erreur
 - Utilisation systématique de `StyleSheet.create()`
 - Respect de l'architecture 3 couches
+- Livres similaires (même genre) affichés sur l'écran de détail
+- Icônes dans la tab bar
 
 ---
 
