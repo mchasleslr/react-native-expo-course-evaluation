@@ -6,7 +6,7 @@
     "rating": 4.8,
     "pages": 96,
     "genre": "Conte",
-    "cover": "https://covers.openlibrary.org/b/id/12844454-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/10778405-M.jpg",
     "description": "Un pilote d'avion, en panne dans le désert du Sahara, rencontre un petit garçon venu d'une autre planète. Ce conte philosophique aborde les thèmes de l'amitié, de l'amour et du sens de la vie à travers le regard innocent d'un enfant."
   },
   {
@@ -16,7 +16,7 @@
     "rating": 4.7,
     "pages": 328,
     "genre": "Dystopie",
-    "cover": "https://covers.openlibrary.org/b/id/12648655-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/966097-M.jpg",
     "description": "Dans un monde totalitaire où Big Brother surveille chaque citoyen, Winston Smith tente de résister à la pensée unique. Un roman visionnaire sur la manipulation, la surveillance et la liberté individuelle."
   },
   {
@@ -26,7 +26,7 @@
     "rating": 4.6,
     "pages": 688,
     "genre": "Science-Fiction",
-    "cover": "https://covers.openlibrary.org/b/id/11153217-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/6451682-M.jpg",
     "description": "Sur la planète désertique Arrakis, le jeune Paul Atreides doit affronter des intrigues politiques et des dangers mortels pour accomplir son destin. Une épopée de science-fiction mêlant écologie, politique et spiritualité."
   },
   {
@@ -36,7 +36,7 @@
     "rating": 4.5,
     "pages": 308,
     "genre": "Fantasy",
-    "cover": "https://covers.openlibrary.org/b/id/14625829-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/12373652-M.jpg",
     "description": "Le jour de ses onze ans, Harry Potter découvre qu'il est un sorcier. Il intègre Poudlard, l'école de sorcellerie, où l'attendent amitié, aventures et un terrible secret lié à son passé."
   },
   {
@@ -46,7 +46,7 @@
     "rating": 4.3,
     "pages": 159,
     "genre": "Roman",
-    "cover": "https://covers.openlibrary.org/b/id/8225261-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/15152916-M.jpg",
     "description": "Meursault, un employé de bureau à Alger, commet un meurtre absurde sur une plage. À travers son procès, Camus explore l'indifférence, l'absurde et la condition humaine."
   },
   {
@@ -56,7 +56,7 @@
     "rating": 4.4,
     "pages": 256,
     "genre": "Science-Fiction",
-    "cover": "https://covers.openlibrary.org/b/id/6998933-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/14348589-M.jpg",
     "description": "Le mathématicien Hari Seldon prédit la chute de l'Empire Galactique. Pour préserver le savoir, il crée la Fondation aux confins de la galaxie. Le début d'une saga monumentale."
   },
   {
@@ -66,7 +66,7 @@
     "rating": 4.2,
     "pages": 176,
     "genre": "Dystopie",
-    "cover": "https://covers.openlibrary.org/b/id/9273028-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/14415964-M.jpg",
     "description": "Dans un futur où les livres sont interdits et brûlés, le pompier Guy Montag commence à remettre en question sa mission. Un hymne à la lecture et à la pensée critique."
   },
   {
@@ -76,7 +76,207 @@
     "rating": 4.9,
     "pages": 1178,
     "genre": "Fantasy",
-    "cover": "https://covers.openlibrary.org/b/id/14350216-M.jpg",
+    "cover": "https://covers.openlibrary.org/b/id/10511218-M.jpg",
     "description": "Le hobbit Frodon Sacquet doit détruire l'Anneau Unique dans les flammes de la Montagne du Destin pour sauver la Terre du Milieu du Seigneur des Ténèbres, Sauron."
+  },
+  {
+    "id": "9",
+    "title": "Crime et Châtiment",
+    "author": "Fiodor Dostoïevski",
+    "rating": 4.6,
+    "pages": 671,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/13643709-M.jpg",
+    "description": "Raskolnikov, un étudiant pauvre de Saint-Pétersbourg, commet un meurtre en se croyant au-dessus des lois morales ordinaires. Un chef-d'œuvre sur la culpabilité, la rédemption et la psychologie humaine."
+  },
+  {
+    "id": "10",
+    "title": "Le Comte de Monte-Cristo",
+    "author": "Alexandre Dumas",
+    "rating": 4.7,
+    "pages": 1276,
+    "genre": "Aventure",
+    "cover": "https://covers.openlibrary.org/b/id/15160385-M.jpg",
+    "description": "Edmond Dantès, injustement emprisonné au château d'If, s'évade après quatorze ans et, enrichi d'un immense trésor, devient le comte de Monte-Cristo pour se venger de ceux qui l'ont trahi."
+  },
+  {
+    "id": "11",
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "rating": 4.8,
+    "pages": 1900,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/12917653-M.jpg",
+    "description": "Jean Valjean, ancien bagnard, cherche à se racheter dans une France du XIXe siècle marquée par l'injustice sociale. Une fresque humaniste sur la misère, la justice et la rédemption."
+  },
+  {
+    "id": "12",
+    "title": "Orgueil et Préjugés",
+    "author": "Jane Austen",
+    "rating": 4.6,
+    "pages": 432,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/15092533-M.jpg",
+    "description": "Elizabeth Bennet et le hautain Mr Darcy se retrouvent peu à peu attirés l'un vers l'autre malgré leurs préjugés respectifs. Une comédie de mœurs brillante sur le mariage et la société anglaise."
+  },
+  {
+    "id": "13",
+    "title": "Le Meilleur des Mondes",
+    "author": "Aldous Huxley",
+    "rating": 4.4,
+    "pages": 311,
+    "genre": "Dystopie",
+    "cover": "https://covers.openlibrary.org/b/id/3124393-M.jpg",
+    "description": "Dans un futur où les êtres humains sont fabriqués en série et conditionnés au bonheur, Bernard Marx commence à remettre en question l'ordre établi. Une dystopie prophétique sur le consumérisme et la liberté."
+  },
+  {
+    "id": "14",
+    "title": "Cent Ans de Solitude",
+    "author": "Gabriel García Márquez",
+    "rating": 4.5,
+    "pages": 448,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/963821-M.jpg",
+    "description": "L'épopée de la famille Buendía sur sept générations dans la ville fictive de Macondo. Un roman fondateur du réalisme magique, mêlant le quotidien et le merveilleux avec une maîtrise incomparable."
+  },
+  {
+    "id": "15",
+    "title": "La Métamorphose",
+    "author": "Franz Kafka",
+    "rating": 4.3,
+    "pages": 128,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/11664004-M.jpg",
+    "description": "Gregor Samsa se réveille un matin transformé en un gigantesque insecte. Une allégorie bouleversante sur l'aliénation, la famille et l'identité, pilier de la littérature du XXe siècle."
+  },
+  {
+    "id": "16",
+    "title": "Le Nom de la Rose",
+    "author": "Umberto Eco",
+    "rating": 4.4,
+    "pages": 502,
+    "genre": "Policier",
+    "cover": "https://covers.openlibrary.org/b/id/976764-M.jpg",
+    "description": "Dans une abbaye médiévale italienne, le moine Guillaume de Baskerville enquête sur une série de morts mystérieuses. Un roman policier historique et philosophique d'une érudition fascinante."
+  },
+  {
+    "id": "17",
+    "title": "Anna Karénine",
+    "author": "Léon Tolstoï",
+    "rating": 4.6,
+    "pages": 964,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/977097-M.jpg",
+    "description": "Anna Karénine, femme de la haute société russe, sacrifie tout pour vivre une passion amoureuse avec le comte Vronski. Un roman monumental sur l'amour, la société et la morale."
+  },
+  {
+    "id": "18",
+    "title": "Les Trois Mousquetaires",
+    "author": "Alexandre Dumas",
+    "rating": 4.5,
+    "pages": 704,
+    "genre": "Aventure",
+    "cover": "https://covers.openlibrary.org/b/id/14561834-M.jpg",
+    "description": "Le jeune d'Artagnan monte à Paris pour devenir mousquetaire du roi et se lie d'amitié avec Athos, Porthos et Aramis. Une aventure trépidante pleine de duels, d'intrigues et de camaraderie."
+  },
+  {
+    "id": "19",
+    "title": "Le Grand Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "rating": 4.2,
+    "pages": 180,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/10757874-M.jpg",
+    "description": "Dans les années folles américaines, le mystérieux Jay Gatsby organise des fêtes somptueuses pour reconquérir Daisy Buchanan, son amour perdu. Une critique acerbe du rêve américain."
+  },
+  {
+    "id": "20",
+    "title": "L'Alchimiste",
+    "author": "Paulo Coelho",
+    "rating": 4.1,
+    "pages": 224,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/994197-M.jpg",
+    "description": "Santiago, un jeune berger andalou, part en quête d'un trésor en Égypte guidé par ses rêves. Un roman initiatique sur l'écoute de son cœur et la réalisation de sa légende personnelle."
+  },
+  {
+    "id": "21",
+    "title": "Germinal",
+    "author": "Émile Zola",
+    "rating": 4.5,
+    "pages": 592,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/8236934-M.jpg",
+    "description": "Étienne Lantier arrive dans un coron minier du Nord de la France et organise la révolte des mineurs contre leurs conditions de travail inhumaines. Un chef-d'œuvre du naturalisme sur la lutte des classes."
+  },
+  {
+    "id": "22",
+    "title": "La Peste",
+    "author": "Albert Camus",
+    "rating": 4.4,
+    "pages": 308,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/14999187-M.jpg",
+    "description": "La ville d'Oran est frappée par une épidémie de peste. Le docteur Rieux et quelques habitants luttent contre le fléau avec courage et solidarité. Une allégorie sur le mal, la résistance et la fraternité."
+  },
+  {
+    "id": "23",
+    "title": "Madame Bovary",
+    "author": "Gustave Flaubert",
+    "rating": 4.3,
+    "pages": 396,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/12993441-M.jpg",
+    "description": "Emma Bovary, femme d'un médecin de province, rêve d'une vie romanesque et passionnée. Ses illusions la mènent à l'adultère et à la ruine. Un roman fondateur du réalisme français."
+  },
+  {
+    "id": "24",
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "rating": 4.1,
+    "pages": 635,
+    "genre": "Aventure",
+    "cover": "https://covers.openlibrary.org/b/id/11023042-M.jpg",
+    "description": "Le capitaine Achab entraîne l'équipage du Péquod dans une obsessionnelle chasse à la baleine blanche qui lui a arraché sa jambe. Un roman épique sur l'obsession, la nature et le destin."
+  },
+  {
+    "id": "25",
+    "title": "Don Quichotte",
+    "author": "Miguel de Cervantes",
+    "rating": 4.4,
+    "pages": 1056,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/6850889-M.jpg",
+    "description": "Un hidalgo espagnol, la tête remplie de romans de chevalerie, se prend pour un chevalier errant et part à l'aventure avec son fidèle écuyer Sancho Pança. Le premier roman moderne de la littérature occidentale."
+  },
+  {
+    "id": "26",
+    "title": "Neverwhere",
+    "author": "Neil Gaiman",
+    "rating": 4.2,
+    "pages": 370,
+    "genre": "Fantasy",
+    "cover": "https://covers.openlibrary.org/b/id/11223210-M.jpg",
+    "description": "Richard Mayhew, un Londonien ordinaire, aide une jeune fille blessée et bascule dans le Londres-Dessous, un monde souterrain fantastique peuplé de créatures étranges et de dangers mortels."
+  },
+  {
+    "id": "27",
+    "title": "Neuromancien",
+    "author": "William Gibson",
+    "rating": 4.3,
+    "pages": 271,
+    "genre": "Science-Fiction",
+    "cover": "https://covers.openlibrary.org/b/id/12993489-M.jpg",
+    "description": "Case, un ancien hacker déchu, est recruté pour une mission dans le cyberespace. Roman fondateur du mouvement cyberpunk, il a anticipé Internet, la réalité virtuelle et la mondialisation numérique."
+  },
+  {
+    "id": "28",
+    "title": "Le Rouge et le Noir",
+    "author": "Stendhal",
+    "rating": 4.2,
+    "pages": 576,
+    "genre": "Roman",
+    "cover": "https://covers.openlibrary.org/b/id/5661680-M.jpg",
+    "description": "Julien Sorel, jeune homme ambitieux d'origine modeste, tente de s'élever dans la société de la Restauration par la séduction et l'hypocrisie. Un roman d'analyse psychologique sur l'ambition et la passion."
   }
 ]

@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "**/.github": true,
+    "**/.cursor": true,
+    "**/.cursorrules": true,
+    "**/CLAUDE.md": true,
+    "**/.vscode": true
+  },
+  "search.exclude": {
+    "**/.github": true,
+    "**/.cursor": true,
+    "**/.cursorrules": true,
+    "**/CLAUDE.md": true
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false
+}
