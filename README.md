@@ -208,11 +208,11 @@ Ajouter un bouton toggle favori sur l'écran de détail :
 | 4 | Service API (async/await) | 12 |
 | 5 | Custom Hook (useState + useEffect) | 12 |
 | 6 | Debounce (setTimeout + cleanup) | 12 |
-| 7 | Context API + useReducer | 16 |
-| 8 | Filtres par genre (useMemo + ScrollView) | 5 |
-| 9 | Tri des livres (useMemo + sort) | 5 |
-| 10 | Persistance AsyncStorage | 5 |
-| 11 | Bouton favori (intégration Context) | 5 |
+| 7 | Context API + useReducer | 8 |
+| 8 | Filtres par genre (useMemo + ScrollView) | 6 |
+| 9 | Tri des livres (useMemo + sort) | 6 |
+| 10 | Persistance AsyncStorage | 8 |
+| 11 | Bouton favori (intégration Context) | 8 |
 | | **Total** | **100** |
 
 ---
@@ -224,7 +224,6 @@ Ajouter un bouton toggle favori sur l'écran de détail :
 - Utilisation systématique de `StyleSheet.create()`
 - Respect de l'architecture 3 couches
 - Livres similaires (même genre) affichés sur l'écran de détail
-- Icônes dans la tab bar
 
 ---
 
