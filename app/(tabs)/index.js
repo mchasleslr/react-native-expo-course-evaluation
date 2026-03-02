@@ -64,16 +64,17 @@ export default function HomeScreen() {
     );
   }
 
-  if (error) {
-    return (
-      <View style={styles.center}>
-        <Text style={styles.errorText}>⚠️ {error}</Text>
-      </View>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <View style={styles.center}>
+  //       <Text style={styles.errorText}>⚠️ {error}</Text>
+  //     </View>
+  //   );
+  // }
 
   return (
     <View style={styles.container}>
+      <BookCard />
       {/* TODO 8 : Ajouter ici les chips de filtrage par genre (ScrollView horizontal) */}
       {/* TODO 9 : Ajouter ici les chips de tri (ScrollView horizontal) */}
       {/*
