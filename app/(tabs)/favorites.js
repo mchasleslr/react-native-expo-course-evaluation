@@ -2,11 +2,17 @@ import { View, Text, FlatList, Pressable, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../constants/colors';
 import BookCard from '../../components/BookCard';
-import { useFavorites } from '../../contexts/FavoritesContext';
+import { useReadingList, READING_STATUSES } from '../../contexts/ReadingListContext';
+
+const STATUS_LABELS = {
+  [READING_STATUSES.TO_READ]: '📖 À lire',
+  [READING_STATUSES.READING]: '📚 En cours',
+  [READING_STATUSES.FINISHED]: '✅ Terminé',
+};
 
 export default function FavoritesScreen() {
   const router = useRouter();
-  const { favorites } = useFavorites();
+  const { readingList } = useReadingList();
 
   const handleBookPress = (book) => {
     router.push(`/detail/${book.id}`);
@@ -15,30 +21,37 @@ export default function FavoritesScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.subtitle}>
-        {favorites.length} livre{favorites.length !== 1 ? 's' : ''} sauvegardé{favorites.length !== 1 ? 's' : ''}
+        {readingList.length} livre{readingList.length !== 1 ? 's' : ''} dans ma liste
       </Text>
 
       <FlatList
-        data={favorites}
-        keyExtractor={(item) => item.id}
+        data={readingList}
+        keyExtractor={(item) => item.book.id}
         numColumns={2}
         contentContainerStyle={styles.list}
         columnWrapperStyle={styles.row}
         renderItem={({ item }) => (
-          <BookCard
-            title={item.title}
-            author={item.author}
-            cover={item.cover}
-            rating={item.rating}
-            onPress={() => handleBookPress(item)}
-          />
+          <View style={{ flex: 1 }}>
+            <BookCard
+              title={item.book.title}
+              author={item.book.author}
+              cover={item.book.cover}
+              rating={item.book.rating}
+              onPress={() => handleBookPress(item.book)}
+            />
+            <View style={styles.statusBadge}>
+              <Text style={styles.statusText}>
+                {STATUS_LABELS[item.status] || item.status}
+              </Text>
+            </View>
+          </View>
         )}
         ListEmptyComponent={
           <View style={styles.empty}>
             <Text style={styles.emptyIcon}>📚</Text>
-            <Text style={styles.emptyTitle}>Aucun favori</Text>
+            <Text style={styles.emptyTitle}>Liste vide</Text>
             <Text style={styles.emptyText}>
-              Appuyez sur le cœur d'un livre{'\n'}pour l'ajouter à vos favoris.
+              Ajoutez des livres à votre liste{'\n'}depuis l'écran de détail.
             </Text>
             <Pressable
               style={styles.discoverButton}
@@ -104,5 +117,16 @@ const styles = StyleSheet.create({
     color: Colors.text,
     fontSize: 14,
     fontWeight: '600',
+  },
+  statusBadge: {
+    alignItems: 'center',
+    backgroundColor: Colors.surface,
+    borderRadius: 6,
+    marginTop: 4,
+    paddingVertical: 2,
+  },
+  statusText: {
+    color: Colors.textSecondary,
+    fontSize: 11,
   },
 });

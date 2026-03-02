@@ -1,4 +1,5 @@
 import { View, Text, FlatList, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
+import { useMemo } from 'react';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../constants/colors';
 import BookCard from '../../components/BookCard';
@@ -77,20 +78,32 @@ export default function HomeScreen() {
       {/* TODO 9 : Ajouter ici les chips de tri (ScrollView horizontal) */}
       {/*
        * ╔══════════════════════════════════════════════════════════════╗
-       * ║  TODO 2 — FlatList (8 pts)                                  ║
+       * ║  TODO 2 — Sections horizontales par genre (10 pts)           ║
        * ╠══════════════════════════════════════════════════════════════╣
        * ║                                                              ║
-       * ║  Remplacer ce commentaire par une FlatList qui :             ║
+       * ║  Afficher les livres regroupés par genre, chaque genre       ║
+       * ║  formant une section avec un titre et un défilement          ║
+       * ║  horizontal (style Netflix).                                 ║
        * ║                                                              ║
-       * ║  1. Affiche les livres (data={books})                       ║
-       * ║  2. En grille de 2 colonnes (numColumns)                    ║
-       * ║  3. Avec un keyExtractor basé sur l'id                      ║
-       * ║  4. renderItem utilise <BookCard /> avec les bonnes props   ║
-       * ║     → title, author, cover, rating, onPress                 ║
-       * ║  5. contentContainerStyle avec du padding (16)              ║
-       * ║  6. columnWrapperStyle avec un gap de 12                    ║
-       * ║  7. ListEmptyComponent qui affiche "Aucun livre"            ║
-       * ║  8. ItemSeparatorComponent ou gap vertical de 12            ║
+       * ║  1. Regrouper les livres par genre avec useMemo.             ║
+       * ║     Format attendu : [{ genre: 'Fantasy', data: [...] },    ║
+       * ║                       { genre: 'Sci-Fi', data: [...] }]     ║
+       * ║  2. Utiliser un ScrollView vertical englobant.               ║
+       * ║  3. Pour chaque section, afficher :                          ║
+       * ║     - Un <Text> avec le nom du genre (style titre)          ║
+       * ║     - Une <FlatList horizontal> contenant les BookCards      ║
+       * ║  4. Chaque FlatList horizontale doit avoir :                 ║
+       * ║     - horizontal={true}                                      ║
+       * ║     - showsHorizontalScrollIndicator={false}                 ║
+       * ║     - keyExtractor basé sur l'id du livre                    ║
+       * ║     - contentContainerStyle avec du padding                  ║
+       * ║     - ItemSeparatorComponent (gap de 12)                     ║
+       * ║  5. Chaque BookCard reçoit : title, author, cover,          ║
+       * ║     rating, onPress                                          ║
+       * ║  6. Les cartes dans les listes horizontales doivent avoir    ║
+       * ║     une largeur fixe (ex: width: 160)                       ║
+       * ║                                                              ║
+       * ║  Indice : sections.map((section) => ( ... ))                 ║
        * ║                                                              ║
        * ╚══════════════════════════════════════════════════════════════╝
        */}

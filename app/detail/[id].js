@@ -30,20 +30,45 @@ import books from '../../data/books.json';
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  TODO 11 — Bouton favori sur l'écran détail (5 pts)          ║
+ * ║  TODO 11 — Sélecteur de statut de lecture (8 pts)            ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
- * ║  Ajouter un bouton toggle favori sur l'écran de détail :     ║
+ * ║  Ajouter un sélecteur de statut sur l'écran de détail :      ║
  * ║                                                              ║
- * ║  1. Importer useFavorites depuis contexts/FavoritesContext   ║
- * ║  2. Utiliser le hook pour accéder à addFavorite,             ║
- * ║     removeFavorite et isFavorite                             ║
- * ║  3. Afficher un bouton "Ajouter aux favoris" ou             ║
- * ║     "Retirer des favoris" selon l'état (isFavorite(id))     ║
- * ║  4. Le bouton doit changer visuellement quand le livre      ║
- * ║     est en favori (couleur, icône...)                        ║
- * ║  5. Appeler addFavorite(book) ou removeFavorite(book.id)    ║
- * ║     au press                                                 ║
+ * ║  1. Importer useReadingList et READING_STATUSES depuis       ║
+ * ║     contexts/ReadingListContext                               ║
+ * ║  2. Utiliser le hook pour accéder à : addToList,             ║
+ * ║     updateStatus, removeFromList, getBookStatus, isInList    ║
+ * ║  3. Afficher 3 boutons correspondant aux 3 statuts :         ║
+ * ║     - "📖 À lire"       → READING_STATUSES.TO_READ          ║
+ * ║     - "📚 En cours"     → READING_STATUSES.READING          ║
+ * ║     - "✅ Terminé"      → READING_STATUSES.FINISHED         ║
+ * ║  4. Le bouton du statut actuel doit être visuellement        ║
+ * ║     distinct (couleur de fond différente, ex: primary)       ║
+ * ║  5. Au press d'un bouton :                                   ║
+ * ║     - Si le livre n'est PAS dans la liste → addToList(book,  ║
+ * ║       status)                                                 ║
+ * ║     - Si le livre est dans la liste → updateStatus(book.id,  ║
+ * ║       status)                                                 ║
+ * ║  6. Si le livre est dans la liste, afficher un bouton        ║
+ * ║     "Retirer de ma liste" qui appelle removeFromList(id)     ║
+ * ║                                                              ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ */
+
+/**
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  TODO 13 — BONUS : ReadingProgress (+5 pts)                  ║
+ * ╠══════════════════════════════════════════════════════════════╣
+ * ║                                                              ║
+ * ║  Si le livre est dans la liste de lecture, afficher le        ║
+ * ║  composant <ReadingProgress status={...} /> sous le          ║
+ * ║  sélecteur de statut.                                        ║
+ * ║                                                              ║
+ * ║  1. Importer ReadingProgress depuis components/              ║
+ * ║  2. Récupérer le statut actuel via getBookStatus(id)         ║
+ * ║  3. Si le livre est dans la liste, afficher :                ║
+ * ║     <ReadingProgress status={currentStatus} />               ║
  * ║                                                              ║
  * ╚══════════════════════════════════════════════════════════════╝
  */
@@ -53,10 +78,11 @@ export default function DetailScreen() {
 
   // TODO 3 : Récupérer l'id et trouver le livre correspondant
 
-  // TODO 11 : Utiliser useFavorites() pour accéder aux fonctions de favoris
+  // TODO 11 : Utiliser useReadingList() pour accéder aux fonctions de la liste de lecture
 
   // TODO 3 : Remplacer ce return par l'écran de détail complet
-  // TODO 11 : Ajouter un bouton favori dans l'écran de détail
+  // TODO 11 : Ajouter le sélecteur de statut (3 boutons) dans l'écran de détail
+  // TODO 13 : Ajouter <ReadingProgress /> si le livre est dans la liste
   return (
     <View style={styles.center}>
       <Text style={styles.placeholder}>TODO 3 : Écran de détail à compléter</Text>

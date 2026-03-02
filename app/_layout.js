@@ -1,11 +1,11 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Colors } from '../constants/colors';
-import { FavoritesProvider } from '../contexts/FavoritesContext';
+import { ReadingListProvider } from '../contexts/ReadingListContext';
 
 export default function RootLayout() {
   return (
-    <FavoritesProvider>
+    <ReadingListProvider>
       <StatusBar style="light" />
       <Stack
         screenOptions={{
@@ -13,6 +13,6 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: Colors.background },
         }}
       />
-    </FavoritesProvider>
+    </ReadingListProvider>
   );
 }

@@ -7,16 +7,16 @@
 | **Durée** | 2 heures |
 | **Documents autorisés** | Documentation officielle uniquement (reactnative.dev, docs.expo.dev) |
 | **Rendu** | Projet complet zippé, envoyé par email |
-| **Barème** | /100 points |
+| **Barème** | /100 points (+5 bonus) |
 
 ---
 
 ## Contexte
 
-Vous devez compléter **BookShelf**, une application de découverte de livres.
+Vous devez compléter **BookShelf**, une application de découverte de livres avec une **liste de lecture** à 3 statuts ("À lire", "En cours", "Terminé").
 L'application est partiellement construite : la navigation, les couleurs et les données sont en place.
 
-**Votre travail** : compléter les **11 fichiers/fonctionnalités marqués `// TODO`** pour rendre l'application fonctionnelle et enrichie.
+**Votre travail** : compléter les **fonctionnalités marquées `// TODO`** pour rendre l'application fonctionnelle et enrichie.
 
 Chaque TODO est numéroté, localisé dans un fichier précis, et décrit ce qui est attendu.
 Les points sont indiqués pour chaque TODO.
@@ -35,18 +35,19 @@ npx expo start
 ## Architecture du projet
 
 ```
-app/                           ← Navigation (fournie)
+app/                           ← Navigation
 ├── (tabs)/
 │   ├── _layout.js             ✅ Complet
 │   ├── index.js               📝 Utilise TODO 1, 2, 5, 8, 9
 │   ├── search.js              📝 Contient TODO 6
-│   └── favorites.js           📝 Utilise TODO 7
+│   └── favorites.js           ✅ Complet (utilise le contexte)
 ├── detail/
-│   └── [id].js                📝 Contient TODO 3, 11
+│   └── [id].js                📝 Contient TODO 3, 11, 13 (bonus)
 └── _layout.js                 ✅ Complet
 
 components/
-└── BookCard.js                📝 TODO 1
+├── BookCard.js                📝 TODO 1
+└── ReadingProgress.js         📝 TODO 13 (bonus)
 
 services/
 └── books.js                   📝 TODO 4
@@ -56,7 +57,7 @@ hooks/
 └── useSearch.js               📝 TODO 6
 
 contexts/
-└── FavoritesContext.js         📝 TODO 7, 10
+└── ReadingListContext.js       📝 TODO 7, 10
 
 constants/                     ✅ Complet
 data/books.json                ✅ Données fournies
@@ -65,7 +66,7 @@ utils/                         ✅ Complet
 
 ---
 
-## Les 11 TODO
+## Les TODO
 
 ### TODO 1 — Composant BookCard (12 pts)
 📄 **Fichier** : `components/BookCard.js`
@@ -82,15 +83,15 @@ Créer un composant `BookCard` qui affiche une carte de livre avec :
 
 ---
 
-### TODO 2 — FlatList (8 pts)
+### TODO 2 — Sections horizontales par genre (10 pts)
 📄 **Fichier** : `app/(tabs)/index.js`
 
-Remplacer le commentaire TODO par une `FlatList` qui :
-- Affiche les livres en grille (2 colonnes)
-- Utilise `keyExtractor` avec l'id du livre
-- A un `contentContainerStyle` avec du padding
-- Gère le `columnWrapperStyle` pour l'espacement
-- Affiche un `ListEmptyComponent` quand il n'y a pas de données
+Afficher les livres regroupés par genre avec un défilement horizontal par section (style Netflix) :
+- Regrouper les livres par genre avec `useMemo` (format : `[{ genre, data }]`)
+- Utiliser un `ScrollView` vertical contenant les sections
+- Pour chaque section : un `<Text>` titre du genre + une `<FlatList horizontal>`
+- Chaque `FlatList` : `horizontal`, `showsHorizontalScrollIndicator={false}`, `keyExtractor`, `contentContainerStyle`, `ItemSeparatorComponent` (gap 12)
+- Les `BookCard` dans les listes horizontales ont une largeur fixe (ex: 160)
 
 ---
 
@@ -143,14 +144,22 @@ Compléter le hook `useSearch` :
 
 ---
 
-### TODO 7 — FavoritesContext (16 pts)
-📄 **Fichier** : `contexts/FavoritesContext.js`
+### TODO 7 — ReadingListContext (10 pts)
+📄 **Fichier** : `contexts/ReadingListContext.js`
 
-Compléter le système de favoris :
-- Écrire le `reducer` avec les actions `ADD`, `REMOVE`
-- Compléter le `FavoritesProvider` avec `useReducer`
-- Implémenter les fonctions `addFavorite`, `removeFavorite`, `isFavorite`
-- Exposer le tout via le Context
+Compléter le système de liste de lecture avec 3 statuts (`to_read`, `reading`, `finished`) :
+
+**Partie A — Le reducer (5 pts)**
+- `LOAD` : remplace le state par `action.payload`
+- `ADD_TO_LIST` : ajoute `{ book, status }` (si pas déjà présent)
+- `UPDATE_STATUS` : change le statut d'une entrée existante
+- `REMOVE_FROM_LIST` : retire un livre par son id
+
+**Partie B — Le Provider (5 pts)**
+- `useReducer` avec le reducer et `[]` comme état initial
+- `addToList(book, status)`, `updateStatus(id, status)`, `removeFromList(id)`
+- `getBookStatus(id)` → retourne le statut ou null
+- `isInList(id)` → retourne true/false
 
 ---
 
@@ -161,7 +170,7 @@ Ajouter un système de filtrage par genre sur l'écran d'accueil :
 - Extraire dynamiquement les genres disponibles depuis la liste de livres (avec `useMemo`)
 - Afficher des chips horizontaux (`ScrollView` horizontal) permettant de sélectionner un genre
 - Ajouter un chip "Tous" pour réinitialiser le filtre
-- Filtrer la `FlatList` en fonction du genre sélectionné
+- Filtrer les sections en fonction du genre sélectionné
 
 ---
 
@@ -171,49 +180,60 @@ Ajouter un système de filtrage par genre sur l'écran d'accueil :
 Ajouter un système de tri sur l'écran d'accueil :
 - Proposer plusieurs options de tri : par défaut, note croissante, note décroissante, titre A-Z, titre Z-A
 - Afficher les options sous forme de chips horizontaux
-- Appliquer le tri sur la liste filtrée (compatible avec le filtre genre)
+- Appliquer le tri sur les livres dans chaque section (compatible avec le filtre genre)
 - Utiliser `useMemo` pour optimiser le calcul
 
 ---
 
-### TODO 10 — Persistance des favoris (5 pts)
-📄 **Fichier** : `contexts/FavoritesContext.js`
+### TODO 10 — Persistance de la liste de lecture (6 pts)
+📄 **Fichier** : `contexts/ReadingListContext.js`
 
-Persister les favoris avec `AsyncStorage` :
-- Installer `@react-native-async-storage/async-storage`
-- Au montage du Provider, charger les favoris sauvegardés (action `LOAD` dans le reducer)
-- À chaque changement de la liste de favoris, sauvegarder dans `AsyncStorage`
+Persister la liste de lecture avec `AsyncStorage` :
+- Au montage du Provider, charger la liste sauvegardée (action `LOAD` dans le reducer)
+- À chaque changement de la liste (après chargement initial), sauvegarder dans `AsyncStorage`
 - Gérer les erreurs silencieusement (ne pas bloquer l'app si le storage échoue)
 
 ---
 
-### TODO 11 — Bouton favori sur l'écran détail (5 pts)
+### TODO 11 — Sélecteur de statut de lecture (8 pts)
 📄 **Fichier** : `app/detail/[id].js`
 
-Ajouter un bouton toggle favori sur l'écran de détail :
-- Utiliser le hook `useFavorites` pour accéder au contexte
-- Afficher un bouton "Ajouter aux favoris" / "Retirer des favoris" selon l'état
-- Le bouton doit changer visuellement quand le livre est en favori
-- Appeler `addFavorite` ou `removeFavorite` au press
+Ajouter un sélecteur de statut sur l'écran de détail :
+- Importer `useReadingList` et `READING_STATUSES` depuis `contexts/ReadingListContext`
+- Afficher 3 boutons : "📖 À lire", "📚 En cours", "✅ Terminé"
+- Le bouton du statut actuel doit être visuellement distinct (couleur différente)
+- Au press : si pas dans la liste → `addToList(book, status)` / si déjà → `updateStatus(id, status)`
+- Si dans la liste, afficher un bouton "Retirer de ma liste" → `removeFromList(id)`
+
+---
+
+### TODO 13 — BONUS : ReadingProgress (+5 pts)
+📄 **Fichier** : `components/ReadingProgress.js` + `app/detail/[id].js`
+
+Créer un composant barre de progression basé sur le statut de lecture :
+- `to_read` → 0%, `reading` → 50%, `finished` → 100%
+- Afficher un label, une barre colorée (rouge → orange → vert) et le pourcentage
+- Intégrer le composant dans l'écran de détail sous le sélecteur de statut
 
 ---
 
 ## Barème récapitulatif
 
-| TODO | Compétence | Points |
-|------|-----------|--------|
-| 1 | Core Components + StyleSheet | 12 |
-| 2 | FlatList | 8 |
-| 3 | Navigation (Expo Router) | 8 |
-| 4 | Service API (async/await) | 12 |
-| 5 | Custom Hook (useState + useEffect) | 12 |
-| 6 | Debounce (setTimeout + cleanup) | 12 |
-| 7 | Context API + useReducer | 8 |
-| 8 | Filtres par genre (useMemo + ScrollView) | 6 |
-| 9 | Tri des livres (useMemo + sort) | 6 |
-| 10 | Persistance AsyncStorage | 8 |
-| 11 | Bouton favori (intégration Context) | 8 |
-| | **Total** | **100** |
+| TODO | Description | Points |
+|------|-------------|--------|
+| 1 | BookCard | 12 |
+| 2 | Sections horizontales par genre | 10 |
+| 3 | Navigation détail | 8 |
+| 4 | Service API | 12 |
+| 5 | Custom Hook useBooks | 12 |
+| 6 | Hook useSearch + debounce | 12 |
+| 7 | ReadingListContext (reducer + provider) | 10 |
+| 8 | Filtres par genre | 5 |
+| 9 | Tri des livres | 5 |
+| 10 | Persistance AsyncStorage | 6 |
+| 11 | Sélecteur de statut de lecture | 8 |
+| **Total** | | **100** |
+| 13 | BONUS : ReadingProgress | +5 |
 
 ---
 

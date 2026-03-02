@@ -1,4 +1,5 @@
 import { Tabs } from 'expo-router';
+import { BookMarked } from 'lucide-react-native';
 import { Colors } from '../../constants/colors';
 
 export default function TabsLayout() {
@@ -25,7 +26,11 @@ export default function TabsLayout() {
       />
       <Tabs.Screen
         name="favorites"
-        options={{ title: 'Favoris', tabBarLabel: 'Favoris' }}
+        options={{
+          title: 'Ma liste',
+          tabBarLabel: 'Ma liste',
+          tabBarIcon: ({ color, size }) => <BookMarked size={size} color={color} />,
+        }}
       />
     </Tabs>
   );
