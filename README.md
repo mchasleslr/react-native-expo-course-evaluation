@@ -1,4 +1,4 @@
-# 📚 Évaluation — BookShelf
+# 📚 Évaluation — BookShelf - Maxime Chasles
 
 **Formation React Native & Expo — Évaluation finale**
 

@@ -24,6 +24,12 @@ import { delay } from '../utils';
  */
 export async function getPopularBooks() {
   // TODO 4a : Simuler un délai, puis retourner les livres
+  try {
+    await delay(8000)
+    return books
+  } catch {
+    throw new Error("Error while fetching books.")
+  }
   // En cas d'erreur, throw une Error avec un message explicite
 }
 
@@ -35,6 +41,11 @@ export async function getPopularBooks() {
 export async function getBookById(id) {
   // TODO 4b : Simuler un délai, chercher le livre par id
   // Si non trouvé, throw new Error('Livre non trouvé')
+  const found = books.find(b => Number(b.id) === Number(id))
+
+  if (!found) throw new Error(`Book with id ${id} not found.`)
+
+  return found
 }
 
 /**
@@ -43,6 +54,9 @@ export async function getBookById(id) {
  * @returns {Promise<Array>} Les livres correspondants
  */
 export async function searchBooks(query) {
+  const founded = books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()) || book.author.toLowerCase().includes(query.toLowerCase()))
+
+  return founded
   // TODO 4c : Simuler un délai, filtrer les livres
   // Le filtre doit chercher dans title ET author (insensible à la casse)
   // Astuce : .toLowerCase().includes(query.toLowerCase())

@@ -1,6 +1,6 @@
-import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
-import { Colors } from '../constants/colors';
-import React from 'react';
+import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { Colors } from "../constants/colors";
+import React from "react";
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
@@ -28,55 +28,70 @@ import React from 'react';
  * ╚══════════════════════════════════════════════════════════════╝
  */
 
-export default function BookCard({ title = "title", author = "author", cover = "https://covers.openlibrary.org/b/id/10778405-M.jpg", rating = 4, onPress = () => console.log("[BookCard] onPress callback is not provided.") }) {
-  const [opacity, setOpacity] = React.useState(1)
+export default function BookCard({
+  title = "title",
+  author = "author",
+  cover = "https://covers.openlibrary.org/b/id/10778405-M.jpg",
+  rating = 4,
+  onPress = () => console.log("[BookCard] onPress callback is not provided."),
+}) {
+  const [opacity, setOpacity] = React.useState(1);
 
   // TODO 1 : Remplacer ce return par votre composant
   const onCardPressed = () => {
-    console.log("BookCard pressed")
-    onPress?.()
-  }
+    console.log("BookCard pressed");
+    onPress?.();
+  };
 
-  const nbStars = Math.round(rating)
+  const nbStars = Math.round(rating);
 
   return (
-  <Pressable onPressIn={() => setOpacity(0.80)} onPressOut={() => setOpacity(1)} onPress={onCardPressed} style={[styles.layout, {opacity}]}>
-    <Image style={styles.cover} source={{uri: cover}}/>
-    <View style={styles.bottom} >
-    <Text style={styles.title}>{title}</Text>
-    <Text style={styles.author}>{author}</Text>
-    <Text style={styles.rating}>{rating} {"★".repeat(nbStars)} </Text>
-    </View >
-  </Pressable>
-  )
+    <Pressable
+      onPressIn={() => setOpacity(0.8)}
+      onPressOut={() => setOpacity(1)}
+      onPress={onCardPressed}
+      style={[styles.layout, { opacity }]}
+    >
+      <Image style={styles.cover} source={{ uri: cover }} />
+      <View style={styles.bottom}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.author}>{author}</Text>
+        <Text style={styles.rating}>
+          {rating} {"★".repeat(nbStars)}{" "}
+        </Text>
+      </View>
+    </Pressable>
+  );
 }
 
 const styles = StyleSheet.create({
   layout: {
     borderRadius: 8,
+    height: "100%",
+    overflow: "hidden",
     backgroundColor: Colors.card,
     boxShadow: [
       {
         offsetX: 0,
         offsetY: -2,
-        blurRadius: '8px',
-        spreadDistance: '2px',
+        blurRadius: "8px",
+        spreadDistance: "2px",
         color: Colors.shadow,
-      }
-    ]
+      },
+    ],
   },
   cover: {
-    height: 200,
+    height: 120,
     objectFit: "cover",
-    maxHeight: "100%"
+    maxWidth: "100%",
   },
   bottom: {
-    padding: 16
+    padding: 16,
   },
   title: {
     color: Colors.text,
     fontSize: 18,
-    fontWeight: "700"
+    fontWeight: "700",
   },
   author: {
     color: Colors.textSecondary,
@@ -85,6 +100,5 @@ const styles = StyleSheet.create({
   rating: {
     color: Colors.text,
     fontSize: 12,
-  }
-
-})
+  },
+});

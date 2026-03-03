@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getPopularBooks } from '../services/books';
 
 /**
@@ -26,7 +26,27 @@ import { getPopularBooks } from '../services/books';
 
 export function useBooks() {
   // TODO 5 : Implémenter le hook complet
+  const [books, setBooks] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState(null)
 
-  // Supprimer ce return temporaire une fois le hook implémenté
-  return { books: [], loading: false, error: 'TODO 5 : hook à implémenter', refresh: () => {} };
+
+  const fetchBooks = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const res = await getPopularBooks()
+      setBooks(res)
+    } catch (error) {
+      setError(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  React.useEffect(() => {
+    fetchBooks()
+  }, [])
+
+  return { books, loading, error, refresh: fetchBooks };
 }

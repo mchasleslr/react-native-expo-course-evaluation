@@ -1,9 +1,12 @@
 import { View, Text, FlatList, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../constants/colors';
 import BookCard from '../../components/BookCard';
 import { useBooks } from '../../hooks/useBooks';
+import { Separator } from '../../components/Separator';
+
+// import books from "../../data/books.json"
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
@@ -64,17 +67,29 @@ export default function HomeScreen() {
     );
   }
 
-  // if (error) {
-  //   return (
-  //     <View style={styles.center}>
-  //       <Text style={styles.errorText}>⚠️ {error}</Text>
-  //     </View>
-  //   );
-  // }
+  if (error) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.errorText}>⚠️ {error}</Text>
+      </View>
+    );
+  }
+
+  const sections = React.useMemo(() => {
+    const records = {}
+    books.forEach(book => {
+      if (!records[book.genre]) {
+        records[book.genre] = {}
+          records[book.genre].data = []
+      }
+      records[book.genre].data.push(book)
+    })
+    return Object.entries(records).map(([genre, {data}]) => ({genre, data: data}))
+  }, [books])
+
 
   return (
     <View style={styles.container}>
-      <BookCard />
       {/* TODO 8 : Ajouter ici les chips de filtrage par genre (ScrollView horizontal) */}
       {/* TODO 9 : Ajouter ici les chips de tri (ScrollView horizontal) */}
       {/*
@@ -86,31 +101,59 @@ export default function HomeScreen() {
        * ║  formant une section avec un titre et un défilement          ║
        * ║  horizontal (style Netflix).                                 ║
        * ║                                                              ║
-       * ║  1. Regrouper les livres par genre avec useMemo.             ║
+       * ║  1. Regrouper les livres par genre avec useMemo.     X        ║
        * ║     Format attendu : [{ genre: 'Fantasy', data: [...] },    ║
        * ║                       { genre: 'Sci-Fi', data: [...] }]     ║
-       * ║  2. Utiliser un ScrollView vertical englobant.               ║
+       * ║  2. Utiliser un ScrollView vertical englobant.   X            ║
        * ║  3. Pour chaque section, afficher :                          ║
-       * ║     - Un <Text> avec le nom du genre (style titre)          ║
-       * ║     - Une <FlatList horizontal> contenant les BookCards      ║
-       * ║  4. Chaque FlatList horizontale doit avoir :                 ║
+       * ║     - Un <Text> avec le nom du genre (style titre)   X       ║
+       * ║     - Une <FlatList horizontal> contenant les BookCards  x     ║
+       * ║  4. Chaque FlatList horizontale doit avoir : X                ║
        * ║     - horizontal={true}                                      ║
        * ║     - showsHorizontalScrollIndicator={false}                 ║
        * ║     - keyExtractor basé sur l'id du livre                    ║
        * ║     - contentContainerStyle avec du padding                  ║
        * ║     - ItemSeparatorComponent (gap de 12)                     ║
        * ║  5. Chaque BookCard reçoit : title, author, cover,          ║
-       * ║     rating, onPress                                          ║
+       * ║     rating, onPress *                                     ║
        * ║  6. Les cartes dans les listes horizontales doivent avoir    ║
-       * ║     une largeur fixe (ex: width: 160)                       ║
+       * ║     une largeur fixe (ex: width: 160) X                 ║
        * ║                                                              ║
        * ║  Indice : sections.map((section) => ( ... ))                 ║
        * ║                                                              ║
        * ╚══════════════════════════════════════════════════════════════╝
        */}
+       <ScrollView style={styles.scrollView} >
+       {sections.map(s => (
+        <View key={s.genre} style={styles__section.layout}>
+          <Text style={styles__section.title} >{s.genre}</Text>
+            <FlatList
+              renderItem={({item}) => <View style={{width: 180}}><BookCard author={item.author} title={item.title} rating={item.rating} cover={item.cover} onPress={() =>handleBookPress(item.id)}  /></View>}
+              horizontal
+              data={s.data}
+              showsHorizontalScrollIndicator={false}
+              keyExtractor={(item) => item.id}
+              contentContainerStyle={styles__section.content}
+              ItemSeparatorComponent={<Separator gap={12} orientation="horizontal" />} />
+        </View>
+      ))}
+       </ScrollView>
     </View>
   );
 }
+
+const styles__section = StyleSheet.create({
+  layout: {
+    flex: 1,
+    paddingVertical: 16
+  },
+  title: {
+    color: Colors.text,
+    fontWeight: "700",
+    fontSize: 24,
+    marginBottom: 8
+  }
+})
 
 const styles = StyleSheet.create({
   container: {
@@ -127,4 +170,9 @@ const styles = StyleSheet.create({
     color: Colors.error,
     fontSize: 16,
   },
+  scrollView: {
+    flex: 1,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+  }
 });

@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView, Pressable, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Colors } from '../../constants/colors';
 import books from '../../data/books.json';
 
@@ -76,7 +76,11 @@ import books from '../../data/books.json';
 export default function DetailScreen() {
   const router = useRouter();
 
+  const {id} = useLocalSearchParams()
+
+  console.log(books)
   // TODO 3 : Récupérer l'id et trouver le livre correspondant
+
 
   // TODO 11 : Utiliser useReadingList() pour accéder aux fonctions de la liste de lecture
 
@@ -85,7 +89,9 @@ export default function DetailScreen() {
   // TODO 13 : Ajouter <ReadingProgress /> si le livre est dans la liste
   return (
     <View style={styles.center}>
-      <Text style={styles.placeholder}>TODO 3 : Écran de détail à compléter</Text>
+      <Text style={styles.placeholder}>
+        <Text >{book.id}</Text>
+      </Text>
     </View>
   );
 }
